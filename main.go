@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/ameykpatil/wanderlust/handlers"
+	"github.com/ameykpatil/wanderlife/handlers"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/danilopolani/gocialite.v0"
 )

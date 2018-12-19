@@ -16,3 +16,6 @@
 #VS-code
 .vscode/
 .history/
+
+#Jetbrains
+.idea/
