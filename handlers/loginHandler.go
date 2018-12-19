@@ -15,13 +15,8 @@ var gocial = gocialite.NewDispatcher()
 func LoginIndex(c *gin.Context) {
 	c.Writer.Write([]byte("<html><title>Wanderlust - travel, trek, explore</title>" +
 		"<head>Wanderlust - travel, trek, explore</head><body>" +
-		"<a href='/auth/github'><button>Login with GitHub</button></a><br>" +
-		"<a href='/auth/linkedin'><button>Login with LinkedIn</button></a><br>" +
 		"<a href='/auth/facebook'><button>Login with Facebook</button></a><br>" +
 		"<a href='/auth/google'><button>Login with Google</button></a><br>" +
-		"<a href='/auth/bitbucket'><button>Login with Bitbucket</button></a><br>" +
-		"<a href='/auth/amazon'><button>Login with Amazon</button></a><br>" +
-		"<a href='/auth/amazon'><button>Login with Slack</button></a><br>" +
 		"</body></html>"))
 }
 
@@ -36,51 +31,21 @@ func LoginRedirect(c *gin.Context) {
 	// In this case we use a map to store our secrets, but you can use dotenv or your framework configuration
 	// for example, in revel you could use revel.Config.StringDefault(provider + "_clientID", "") etc.
 	providerSecrets := map[string]map[string]string{
-		"github": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/github/callback",
-		},
-		"linkedin": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/linkedin/callback",
-		},
 		"facebook": {
 			"clientID":     "140361796677490",
 			"clientSecret": "bdbd0ad12b644305545457c7b8532a71",
 			"redirectURL":  "http://" + host + "/auth/facebook/callback",
 		},
 		"google": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/google/callback",
-		},
-		"bitbucket": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/bitbucket/callback",
-		},
-		"amazon": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/amazon/callback",
-		},
-		"slack": {
-			"clientID":     "xxxxxxxxxxxxxx",
-			"clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-			"redirectURL":  "http://localhost:9090/auth/slack/callback",
+			"clientID":     "836514519231-48vatqjj80h4d6i8p7n80cfdneufcve2.apps.googleusercontent.com",
+			"clientSecret": "PwvWjldL9uAEQMT1h6dFZJgE",
+			"redirectURL":  "http://" + host + "/auth/google/callback",
 		},
 	}
 
 	providerScopes := map[string][]string{
-		"github":    []string{"public_repo"},
-		"linkedin":  []string{},
 		"facebook":  []string{},
 		"google":    []string{},
-		"bitbucket": []string{},
-		"amazon":    []string{},
-		"slack":     []string{},
 	}
 
 	providerData := providerSecrets[provider]
